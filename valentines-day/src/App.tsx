@@ -18,6 +18,8 @@ function App() {
     onplay: () => setIsPlaying(true),
     onend: () => setIsPlaying(true),
   });
+
+  const [width, setWidth] = useState<number>(window.innerWidth);
   
   let noOptions = ["Ні", "Ти впевнена?", "Точно впевнена?", "Точно-точно?", "Добре подумала?", "Останній шанс!", "Реально ні?", "Це остаточна відповідь?", "Подумай ще раз!", "Ти можеш зробити велику помилку!", "Та май Бога в серці!", "Чому ти така холодна?", "Ти розбиваєш мені серце...;("]
   const onClickNo = () =>
@@ -30,8 +32,16 @@ function App() {
     else
     {
       setCount(count + 1);
-      setYesHeight(yesHeight + 40)
-      setFontSize(fontSize + 10)
+      if (isMobile)
+      {
+        setYesHeight(yesHeight + 20)
+        setFontSize(fontSize + 5)
+      }
+      else{
+        setYesHeight(yesHeight + 40)
+        setFontSize(fontSize + 10)
+      }
+      
     }
   }
 
@@ -45,6 +55,18 @@ function App() {
   useEffect(() => {
     playSound()
   }, []);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+      window.addEventListener('resize', handleWindowSizeChange);
+      return () => {
+          window.removeEventListener('resize', handleWindowSizeChange);
+      }
+  }, []);
+
+  const isMobile = width <= 768;
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -53,12 +75,13 @@ function App() {
       {
         !yesClicked?
       <div className='mainblock'>
-        <img src={gif}></img>
+        
         <div className='MainText'>
+        <img src={gif}></img>
           <h1>Ти будеш моєю Валентинкою?</h1>
           <div className='buttons'>
             <button className="mybtn btn btn-success" onClick={onClickYes} style={{height : `${yesHeight}px`, width : `${yesHeight}px`, fontSize : `${fontSize}px`}}>Так</button>
-            {noVisible == true ? <button className="mybtn btn btn-danger" onClick={onClickNo} style={{height : `40px`}}>{noOptions[count]}</button> : null}
+            {noVisible == true ? <button className="mybtn btn btn-danger" onClick={onClickNo} style={{maxHeight : `60px`}}>{noOptions[count]}</button> : null}
           </div>
         </div>
       </div> :

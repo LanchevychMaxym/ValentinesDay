@@ -2,20 +2,61 @@
   text-align: center;
 }
 
-.buttons {
-  padding-top: 40px;
-  display: flex;
-  max-width: 30%;
-  justify-content: space-around;
-  margin: auto;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-.mybtn {
-  min-width: 80px;
-}
+@media screen and (min-width: 769px) { 
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  .buttons {
+    padding-top: 40px;
+    display: flex;
+    max-width: 30%;
+    justify-content: space-around;
+    margin: auto;
+  }
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  .mybtn {
+    min-width: 80px;
+  }
+ }
+
+@media screen and (max-width: 768px) { 
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 1vmin);
+    color: white;
+  }
+  .buttons {
+    padding-top: 40px;
+    display: flex;
+    /* max-width: 30%; */
+    justify-content: space-around;
+    margin: auto;
+  }
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  .mybtn {
+    min-width: 80px;
+  }
+ }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -25,17 +66,6 @@
 
 .mainblock {
   margin-top: 60px;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
